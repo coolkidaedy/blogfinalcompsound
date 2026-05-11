@@ -55,6 +55,15 @@
             height: 100%;
             border: 0;
         }
+
+        pre {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 0.75rem 1rem;
+            overflow-x: auto;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
     </style>
 </head>
 <body>
@@ -63,28 +72,38 @@
     <p>Aedin Pereira, Maria Showalter, Ahanaf Tajwar</p>
 
     <h2>Motivation</h2>
-    <p>Our motivation stemmed from our own personal experience of feeling like our computer science major ushered us into rigid and theory heavy courses which limited our creativity, a common feeling that many of our peers felt. With the introduction of live coding, we felt as though we were able to explore our creative passions and blend them with the coding skills and techniques we had learned in class. We felt as through we could create a space for our peers to hear and learn about live coding, and hopefully inspire them to incorporate creativity into their own fields. We also wanted to tap into our CS communities to teach them live codding to show them a different side of the field.</p>
+    <p>Our motivation stemmed from our own personal experience of feeling like our computer science major ushered us into rigid and theory heavy courses which limited our creativity, a common feeling that many of our peers felt. With the introduction of live coding, we felt as though we were able to explore our creative passions and blend them with the coding skills and techniques we had learned in class. We felt as though we could create a space for our peers to hear and learn about live coding, and hopefully inspire them to incorporate creativity into their own fields. We also wanted to tap into our CS communities to teach them live coding to show them a different side of the field.</p>
 
     <h2>Implementation</h2>
-    <p>Our implementation of this project required us to plan and advertise the event. We decided to host the event in Uris Hall to provide a space that was accessible to all students. We sourced projectors from the library to project Hydra visuals and our code, replicating the setup we use in class so the audience could see exactly what was happening behind each performance. Next, we recruited some of our classmates to come play sets, and Maria and I played sets ourselves to show off live coding. We staggered the performances so that there was a natural rhythm to the night, with shorter intro sets at the beginning to ease the audience in and longer, more experimental sets later on. The last step was to do outreach to the broader community. We did this by creating posters to hang up around campus and tapping into communities like AKPsi, the premier business fraternity on campus, Lambda Phi Epsilon, the Asian fraternity, and CORE, the entrepreneurship club. All of these clubs are ones we are a part of, and we aggressively advertised to find others who shared the sentiments detailed in our motivation. This grassroots approach helped us reach students who might never have encountered live coding otherwise, drawing in an audience from across very different corners of campus.
-      After showing the audience live coding, we invited people to come try it and taught them the basics. Maria and I were able to walk five people through live coding and let them demo in front of the crowd, which turned the event into something participatory rather than just a performance. We also recorded and documented the whole event on Twitch, with the recording and pictures included below</p>
+    <p>Our implementation of this project required us to plan and advertise the event. We decided to host the event in Uris Hall to provide a space that was accessible to all students. We sourced projectors from the library to project Hydra visuals and our code, replicating the setup we use in class so the audience could see exactly what was happening behind each performance.</p>
+
+    <p>Next, we recruited some of our classmates to come play sets, and Maria and I played sets ourselves to show off live coding. We staggered the performances so that there was a natural rhythm to the night, with shorter intro sets at the beginning to ease the audience in and longer, more experimental sets later on.</p>
+
+    <p>The last step was to do outreach to the broader community. We did this by creating posters to hang up around campus and tapping into communities like AKPsi, the premier business fraternity on campus, Lambda Phi Epsilon, the Asian fraternity, and CORE, the entrepreneurship club. All of these clubs are ones we are a part of, and we aggressively advertised to find others who shared the sentiments detailed in our motivation. This grassroots approach helped us reach students who might never have encountered live coding otherwise, drawing in an audience from across very different corners of campus.</p>
+
+    <p>After showing the audience live coding, we invited people to come try it and taught them the basics. Maria and I were able to walk five people through live coding and let them demo in front of the crowd, which turned the event into something participatory rather than just a performance. We also recorded and documented the whole event on Twitch, with the recording and pictures included below.</p>
 
     <h2>Design Choices</h2>
-    <p>
-         Most of our design choices centered on lowering the barrier between audience and performer. The biggest was committing to Strudel as the only environment we taught. Strudel runs in the browser on top of the Web Audio API, so there were no installs, no audio driver headaches — anyone in the room could pull it up and start making sound within minutes. For a crowd of CS students already comfortable with JavaScript-adjacent syntax, it was the shortest path from "watching" to "doing." We ran Hydra independently for visuals and tried to match the visual energy to the sound rather than syncing the two programmatically, which let performers focus on audio while we drove the visuals in response.
-        We also wrote starter code templates instead of handing people a blank editor. The templates were minimal — a basic pattern with sawtooth, a low-pass filter, and a simple bassline — so a new performer could immediately hear what each parameter did and start tweaking. We focused on the small effects that actually move an Algorave forward: .attack(), .clip(), swapping samples, layering synths. This came partly out of studying how performers like DJ_Dave structure her sets — the music keeps moving not by constantly adding new elements, but by tweaking what's already playing. We baked that into the templates so beginners could build a sense of progression without writing a whole new pattern every eight bars.
-        
-        
-    </p>
+    <p>Most of our design choices centered on lowering the barrier between audience and performer. The biggest was committing to Strudel as the only environment we taught. Strudel runs in the browser on top of the Web Audio API, so there were no installs, no audio driver headaches — anyone in the room could pull it up and start making sound within minutes. For a crowd of CS students already comfortable with JavaScript-adjacent syntax, it was the shortest path from "watching" to "doing." We ran Hydra independently for visuals and tried to match the visual energy to the sound rather than syncing the two programmatically, which let performers focus on audio while we drove the visuals in response.</p>
+
+    <p>We also wrote starter code templates instead of handing people a blank editor. The templates were intentionally minimal — a basic pattern with sawtooth, a low-pass filter, and a simple bassline — so a new performer could immediately hear what each parameter did and start tweaking. Something like:</p>
+
+    <pre><code>stack(
+  note("c2 [eb2 g2] f2 ~").s("sawtooth").lpf(800),
+  s("bd*4, ~ cp ~ cp")
+).slow(2)</code></pre>
+
+    <p>From there, we focused on the small effects that actually move an Algorave forward: <code>.attack()</code>, <code>.clip()</code>, swapping samples, layering synths. This came partly out of studying how performers like DJ_Dave structure her sets — the music keeps moving not by constantly adding new elements, but by tweaking what's already playing. We baked that into the templates so beginners could build a sense of progression without writing a whole new pattern every eight bars.</p>
 
     <h2>Results & Future directions</h2>
-    <p>
-        We had a decent crowd, and more importantly, one that didn't want to leave. What surprised me most was how excited people got. Aedin and I signed up for this class, so of course we're into it — I didn't expect that energy to be contagious for people walking in cold. A few days after the Algorave, I ran into my friend Joseph Jojo (pictured above) at the Columbia Entrepreneurship Summit, and he told me he'd been working through Strudel tutorials on his own time since the event. Seeing someone keep live coding because of one night we hosted was the clearest signal that it landed.
-        If we ran it again, the biggest change would be framing it as a Strudel workshop from the start, with the performance as the payoff. We adapted to that format in real time once we saw how much people wanted to try it themselves, but advertising it that way upfront would let us build in real tutorial time at the beginning and give people more space to perform later. The participatory part was the best part, and it deserved more runway.
-        For anyone into Web Audio or computational sound: try live coding. It's one of the most direct ways to feel how immediate Web Audio can be when you strip away the GUI and the production pipeline. This project also convinced me that CS doesn't have to live in the rigid, theory-heavy corner it often gets pushed into. If you have a creative practice already — music, visuals, anything — there's almost certainly a way to collide it with code.
-    </p>
+    <p>We had a decent crowd, and more importantly, one that didn't want to leave. What surprised me most was how excited people got. Aedin and I signed up for this class, so of course we're into it — I didn't expect that energy to be contagious for people walking in cold. A few days after the Algorave, I ran into my friend Joseph Jojo (pictured above) at the Columbia Entrepreneurship Summit, and he told me he'd been working through Strudel tutorials on his own time since the event. Seeing someone keep live coding because of one night we hosted was the clearest signal that it landed.</p>
+
+    <p>If we ran it again, the biggest change would be framing it as a Strudel workshop from the start, with the performance as the payoff. We adapted to that format in real time once we saw how much people wanted to try it themselves, but advertising it that way upfront would let us build in real tutorial time at the beginning and give people more space to perform later. The participatory part was the best part, and it deserved more runway.</p>
+
+    <p>For anyone into Web Audio or computational sound: try live coding. It's one of the most direct ways to feel how immediate Web Audio can be when you strip away the GUI and the production pipeline. This project also convinced me that CS doesn't have to live in the rigid, theory-heavy corner it often gets pushed into. If you have a creative practice already — music, visuals, anything — there's almost certainly a way to collide it with code.</p>
 
     <h2>Algorave Video</h2>
+    <p>Full recording of the night, originally streamed on Twitch.</p>
     <div class="video-wrap">
         <iframe
             src="https://www.youtube.com/embed/K4-Eb8QL1Dw"
@@ -105,8 +124,6 @@
         <img src="images/candidclass.jpeg" alt="Workshop class, candid moment">
         <figcaption>Classmates helping Maria live code</figcaption>
     </figure>
-
-    
 
     <figure>
       <img src="images/aedinteach.jpeg" alt="Workshop: Aedin teaching">
